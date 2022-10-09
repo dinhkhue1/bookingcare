@@ -8,14 +8,24 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Schedule.belongsTo(models.allCode, {
+        foreignKey: "timeType",
+        targetKey: "keyMap",
+        as: "timeTypeData",
+      });
+
+      Schedule.belongsTo(models.User, {
+        foreignKey: "doctorId",
+        targetKey: "id",
+        as: "doctorData",
+      });
     }
   }
   Schedule.init(
     {
       currentNumber: DataTypes.INTEGER,
       maxNumber: DataTypes.INTEGER,
-      date: DataTypes.DATE,
+      date: DataTypes.STRING,
       timeType: DataTypes.STRING,
       address: DataTypes.STRING,
       doctorId: DataTypes.INTEGER,

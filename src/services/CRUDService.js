@@ -4,9 +4,7 @@ const salt = bcrypt.genSaltSync(10);
 
 let createNewUser = async (data) => {
   let hashPasswordFromBcrypt = await hashUserPassword(data.password);
-  console.log("data được tạo");
-  console.log(data);
-  console.log(hashPasswordFromBcrypt);
+
   return new Promise(async (resolve, reject) => {
     try {
       let hashPasswordFromBcrypt = await hashUserPassword(data.password);

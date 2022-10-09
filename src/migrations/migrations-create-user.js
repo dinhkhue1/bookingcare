@@ -31,10 +31,10 @@ module.exports = {
         type: Sequelize.STRING,
       },
       roleId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       positionId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       image: {
         type: Sequelize.STRING,

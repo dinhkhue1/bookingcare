@@ -18,22 +18,22 @@ let getCRUD = (req, res) => {
 
 let postCRUD = async (req, res) => {
   let message = await CRUDService.createNewUser(req.body);
-  console.log(message);
+
   return res.send("thành công");
 };
 let displayGetCRUD = async (req, res) => {
   let data = await CRUDService.getAllUser();
-  console.log(data);
+
   return res.render("displayCRUD.ejs", {
     dataTable: data,
   });
 };
 let GetEditCRUD = async (req, res) => {
   let userId = req.query.id; //lấy id
-  console.log(userId);
+
   if (userId) {
     let userData = await CRUDService.getUserInforById(userId);
-    console.log("userData", userData);
+
     return res.render("editCRUD.ejs", {
       user: userData,
     });
@@ -46,8 +46,6 @@ let GetEditCRUD = async (req, res) => {
 
 let putCRUD = async (req, res) => {
   let data = req.body; // lấy được tất cả các data trong input của file ejs
-  console.log("--------------a");
-  console.log("User", data);
 
   let allUser = await CRUDService.updateUserData(data);
 
