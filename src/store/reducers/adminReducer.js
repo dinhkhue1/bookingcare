@@ -5,6 +5,11 @@ const initialState = {
   roles: [],
   positions: [],
   isLoadingGender: false,
+  users: [],
+  topDoctors: [],
+  allDoctors: [],
+  allScheduleTime: [],
+  allDoctorInfor: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -47,6 +52,61 @@ const adminReducer = (state = initialState, action) => {
       };
     case actionTypes.FETCH_ROLE_FAILED:
       state.roles = [];
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_ALL_USERS_SUCCESS:
+      state.users = action.users;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ALL_USERS_FAILED:
+      state.users = [];
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_TOP_DOCTORS_SUCCESS:
+      state.topDoctors = action.dataDoctors;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_TOP_DOCTORS_FAILED:
+      state.topDoctors = [];
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_ALL_DOCTORS_SUCCESS:
+      state.allDoctors = action.dataDr;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ALL_DOCTORS_FAILED:
+      state.allDoctors = [];
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_SUCCESS:
+      state.allScheduleTime = action.dataTime;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAILED:
+      state.allScheduleTime = [];
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_DOCTOR_INFOR_SUCCESS:
+      state.allDoctorInfor = action.data;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_DOCTOR_INFOR_FAILED:
+      state.allDoctorInfor = [];
       return {
         ...state,
       };

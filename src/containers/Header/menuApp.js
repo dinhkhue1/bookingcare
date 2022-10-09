@@ -23,11 +23,15 @@ export const adminMenu = [
       },
       {
         name: "menu.admin.manage-doctor",
-        link: "/system/user-doctor",
+        link: "/system/manage-doctor",
       },
       {
         name: "menu.admin.manage-admin",
         link: "/system/user-admin",
+      },
+      {
+        name: "menu.doctor.manage-schedule",
+        link: "/doctor/manage-schedule",
       },
 
       // { name: 'menu.system.system-parameter.header', link: '/system/system-parameter' },
@@ -39,17 +43,17 @@ export const adminMenu = [
     menus: [
       {
         name: "menu.admin.manage-clinic",
-        link: "/system/user-clinic",
+        link: "/system/manage-clinic",
       },
     ],
   },
   {
     // quan ly chuyen khoa
-    name: "menu.admin.speciality",
+    name: "menu.admin.specialty",
     menus: [
       {
-        name: "menu.admin.manage-speciality",
-        link: "/system/manage-speciality",
+        name: "menu.admin.manage-specialty",
+        link: "/system/manage-specialty",
       },
     ],
   },
@@ -60,6 +64,18 @@ export const adminMenu = [
       {
         name: "menu.admin.manage-handbook",
         link: "/system/manage-handbook",
+      },
+    ],
+  },
+];
+
+export const doctorMenu = [
+  {
+    name: "menu.admin.manage-user",
+    menus: [
+      {
+        name: "menu.doctor.manage-schedule",
+        link: "/doctor/manage-schedule",
       },
     ],
   },

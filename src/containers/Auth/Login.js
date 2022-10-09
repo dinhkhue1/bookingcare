@@ -45,9 +45,7 @@ class Login extends Component {
         });
       }
       if (data && data.errCode === 0) {
-        alert("đăng nhập thành công");
         this.props.userLoginSuccess(data.user); // truyen vao cho redux data user
-        console.log("Đăng nhập thành công");
       }
     } catch (error) {
       if (error.response) {
@@ -57,6 +55,11 @@ class Login extends Component {
           });
         }
       }
+    }
+  };
+  handleKeyDown = (event) => {
+    if (event.keyCode === 13) {
+      this.handleLogin();
     }
   };
 
@@ -95,6 +98,7 @@ class Login extends Component {
                   onChange={(event) => {
                     this.handleOnchangePassword(event);
                   }}
+                  onKeyDown={(event) => this.handleKeyDown(event)}
                 />
                 <span
                   onClick={() => {

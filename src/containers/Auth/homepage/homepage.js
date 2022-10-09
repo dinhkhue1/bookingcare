@@ -15,14 +15,14 @@ class homepage extends Component {
   render() {
     let settings = {
       dots: true,
-      infinite: true,
+      infinite: false,
       speed: 500,
       slidesToShow: 4,
       slidesToScroll: 1,
     };
     return (
       <div>
-        <HomeHeader settings={settings} />
+        <HomeHeader settings={settings} isShowBanner={true} />
         <Specialty settings={settings} />
 
         <MedicalFacility settings={settings} />

@@ -25,8 +25,6 @@ const mapStateToProps = (state) => {
   return { isLoggedIn: state.user.isLoggedIn };
 };
 const mapDispatchToProps = (dispatch) => {
-  return;
-  {
-  }
+  return {};
 };
 export default connect(mapStateToProps, mapDispatchToProps)(HomeFoodter);
