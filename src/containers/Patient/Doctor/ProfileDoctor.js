@@ -80,7 +80,6 @@ class BookingModal extends Component {
       doctorId,
     } = this.props;
     let { dataProfile } = this.state;
-    console.log("dpro", dataProfile);
 
     let nameVi = "",
       nameEn = "";

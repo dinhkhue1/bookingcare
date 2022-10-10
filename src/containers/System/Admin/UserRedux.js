@@ -217,7 +217,7 @@ class UserRedux extends Component {
     } = this.state;
     return (
       <div className="user-redux-container">
-        <div className="title">aaaaaa</div>
+        <div className="title">Thêm mới người dùng</div>
         <div className="user-redux-body">
           <div className="container">
             <div className="row">

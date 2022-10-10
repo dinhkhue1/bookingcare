@@ -33,7 +33,7 @@ class OutStandingDoctor extends Component {
     let arrDoctors = this.state.arrDoctors;
     let { language } = this.props;
 
-    arrDoctors = arrDoctors.concat(arrDoctors).concat(arrDoctors);
+    // arrDoctors = arrDoctors.concat(arrDoctors).concat(arrDoctors);
     return (
       <div className="section-share section-outstanding-doctor">
         <div className="section-container">
