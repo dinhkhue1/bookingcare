@@ -13,7 +13,9 @@ let postBookAppointment = (data) => {
         !data.doctorId ||
         !data.timeType ||
         !data.date ||
-        !data.fullName
+        !data.fullName ||
+        !data.selectedGender ||
+        !data.address
       ) {
         resolve({
           errCode: 1,
@@ -37,6 +39,9 @@ let postBookAppointment = (data) => {
             // neu khong co email ham nay se tu tao 1 cai email moi
             email: data.email,
             roleId: "R3",
+            gender: data.selectedGender,
+            address: data.address,
+            firstname: data.fullName,
           },
         });
 
@@ -65,6 +70,7 @@ let postBookAppointment = (data) => {
 };
 
 let postVerifyBookAppointment = (data) => {
+  //cap nhat lai status khi benh nhan chung thuc
   return new Promise(async (resolve, reject) => {
     try {
       if (!data.token || !data.doctorId) {
