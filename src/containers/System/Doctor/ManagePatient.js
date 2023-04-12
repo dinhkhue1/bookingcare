@@ -131,7 +131,7 @@ class ManagePatient extends Component {
               <div className="col-4 form-group text">
                 <label>
                   {/* <FormattedMessage id="manage-patient.choose-date" /> */}
-                  chon ngay kham
+                  Chọn ngày khám
                 </label>
                 <DatePicker
                   onChange={this.handleOnchangeDatePicker}
@@ -172,7 +172,7 @@ class ManagePatient extends Component {
                                 className="mp-btn-confirm"
                                 onClick={() => this.handleBtnConfirm(item)}
                               >
-                                Xac nhan
+                                Xác nhận
                               </button>
                             </td>
                           </tr>

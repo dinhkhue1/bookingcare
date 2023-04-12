@@ -74,7 +74,7 @@ class ManageSpecialty extends Component {
         <div className="ms-title">Quan ly chuyen khoa</div>
         <div className="add-new-specialty row">
           <div className="col-6 form-group">
-            <label> Ten chuyen khoa</label>
+            <label>Tên chuyên khoa</label>
             <input
               className="form-control"
               type="text"
@@ -83,7 +83,7 @@ class ManageSpecialty extends Component {
             />
           </div>
           <div className="col-6 form-group">
-            <label>Anh chuyen khoa</label>
+            <label>Ảnh chuyên khoa</label>
             <br />
             <input
               className="form-control-file"
