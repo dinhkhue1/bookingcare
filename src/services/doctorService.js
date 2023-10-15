@@ -127,6 +127,7 @@ let saveDetailInforDoctor = (inputData) => {
         });
 
         if (doctorInfor) {
+          console.log('11111')
           doctorInfor.doctorId = inputData.doctorId;
           doctorInfor.priceId = inputData.selectedPrice;
           doctorInfor.provinceId = inputData.selectedProvince;
@@ -135,6 +136,7 @@ let saveDetailInforDoctor = (inputData) => {
           doctorInfor.addressClinic = inputData.addressClinic;
           doctorInfor.note = inputData.note;
           doctorInfor.specialtyId = inputData.specialtyId;
+          doctorInfor.specialty = inputData.specialty;
           doctorInfor.clinicId = inputData.clinicId;
 
           await doctorInfor.save();
@@ -149,6 +151,7 @@ let saveDetailInforDoctor = (inputData) => {
             note: inputData.note,
             specialtyId: inputData.specialtyId,
             clinicId: inputData.clinicId,
+            specialty: inputData.specialty
           });
         }
         resolve({
@@ -222,6 +225,57 @@ let getDetailDoctorById = (inputId) => {
           data: data,
         });
       }
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+let getAllDoctor = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await db.User.findAll({
+        where: { roleId: 'R2' },
+        attributes: {
+          exclude: ["password"],
+        },
+        include: [
+          {
+            model: db.Markdown,
+            attributes: ["description", "contentHTML", "contentMarkdown"],
+          },
+          {
+            model: db.allCode,
+            as: "positionData",
+            attributes: ["valueEn", "valueVi"],
+          },
+          {
+            model: db.Doctor_Infor,
+            attributes: {
+              exclude: ["id", "doctorId"],
+            },
+            include: [
+              {
+                model: db.allCode,
+                as: "provinceTypeData",
+                attributes: ["valueEn", "valueVi"],
+              }
+            ],
+          },
+        ],
+        raw: false,
+        nest: true,
+      });
+      console.log('1', data)
+      if (data && data.image) {
+        data.image = new Buffer(data.image, "base64").toString("binary");
+      }
+      if (!data) data = {};
+
+      resolve({
+        errCode: 0,
+        data: data,
+      });
     } catch (error) {
       reject(error);
     }
@@ -520,6 +574,7 @@ module.exports = {
   getAllDoctors: getAllDoctors,
   saveDetailInforDoctor: saveDetailInforDoctor,
   getDetailDoctorById: getDetailDoctorById,
+  getAllDoctor: getAllDoctor,
   bulkCreateSchedule: bulkCreateSchedule,
   getScheduleByDate: getScheduleByDate,
   getExtraInforDoctorById: getExtraInforDoctorById,

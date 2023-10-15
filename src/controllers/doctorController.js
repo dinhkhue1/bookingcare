@@ -38,9 +38,22 @@ let postInforDoctor = async (req, res) => {
     });
   }
 };
+
 let getDetailDoctorById = async (req, res) => {
   try {
     let infor = await doctorService.getDetailDoctorById(req.query.id);
+    return res.status(200).json(infor);
+  } catch (error) {
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "err from the server",
+    });
+  }
+};
+
+let getAllInforDoctor = async (req, res) => {
+  try {
+    let infor = await doctorService.getAllDoctor();
     return res.status(200).json(infor);
   } catch (error) {
     return res.status(200).json({
@@ -110,6 +123,7 @@ let getListPatientForDoctor = async (req, res) => {
       req.query.doctorId,
       req.query.date
     );
+
     return res.status(200).json(infor);
   } catch (error) {
     console.log(error);
@@ -121,7 +135,6 @@ let getListPatientForDoctor = async (req, res) => {
 };
 let sendRemedy = async (req, res) => {
   try {
-    console.log("aa", req.body);
     let infor = await doctorService.sendRemedy(req.body);
 
     return res.status(200).json(infor);
@@ -139,6 +152,7 @@ module.exports = {
   getAllDoctors: getAllDoctors,
   postInforDoctor: postInforDoctor,
   getDetailDoctorById: getDetailDoctorById,
+  getAllInforDoctor: getAllInforDoctor,
   bulkCreateSchedule: bulkCreateSchedule,
   getScheduleByDate: getScheduleByDate,
   getExtraInforDoctorById: getExtraInforDoctorById,

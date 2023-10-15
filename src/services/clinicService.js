@@ -24,7 +24,7 @@ let createClinic = (data) => {
           descriptionHTML: data.descriptionHTML,
           descriptionMarkdown: data.descriptionMarkdown,
         });
-        console.log("aa");
+
         resolve({
           errCode: 0,
           errMessage: "ok",

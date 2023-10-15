@@ -6,6 +6,7 @@ require("dotenv").config();
 import { v4 as uuidv4 } from "uuid";
 
 let postBookAppointment = (data) => {
+  console.log("1", data);
   return new Promise(async (resolve, reject) => {
     try {
       if (
@@ -46,16 +47,24 @@ let postBookAppointment = (data) => {
         });
 
         if (user && user[0]) {
-          await db.Booking.findOrCreate({
-            where: { patientId: user[0].id },
-            defaults: {
-              statusId: "S1",
-              doctorId: data.doctorId,
-              patientId: user[0].id,
-              date: data.date,
-              timeType: data.timeType,
-              token: token,
-            },
+          // await db.Booking.findOrCreate({
+          //   where: { patientId: user[0].id },
+          //   defaults: {
+          //     statusId: "S2",
+          //     doctorId: data.doctorId,
+          //     patientId: user[0].id,
+          //     date: data.date,
+          //     timeType: data.timeType,
+          //     token: token,
+          //   },
+          // });
+          await db.Booking.create({
+            statusId: "S2",
+            doctorId: data.doctorId,
+            patientId: user[0].id,
+            date: data.date,
+            timeType: data.timeType,
+            token: token,
           });
         }
         resolve({
@@ -83,7 +92,7 @@ let postVerifyBookAppointment = (data) => {
           where: {
             doctorId: data.doctorId,
             token: data.token,
-            statusId: "S1",
+            statusId: "S2",
           },
           raw: false,
         });

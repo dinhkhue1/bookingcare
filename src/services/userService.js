@@ -18,7 +18,7 @@ let handleUserLogin = (email, password) => {
   return new Promise(async (resolve, reject) => {
     try {
       let userData = {};
-      let isExit = await checkUseremail(email);
+      let isExit = await checkUseremail(email); // tra ve true hoặc false
       if (isExit) {
         let user = await db.User.findOne({
           where: { email: email },
@@ -37,7 +37,7 @@ let handleUserLogin = (email, password) => {
           if (check) {
             userData.errCode = 0;
             userData.errMessage = "Thành công";
-            delete user.password;
+            delete user.password; // xóa luôn password đó
             userData.user = user;
           } else {
             userData.errCode = 3;
