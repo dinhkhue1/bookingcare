@@ -135,6 +135,7 @@ class ManageDoctor extends Component {
           ? this.state.selectedClinic.value
           : "",
       specialtyId: this.state.selectedSpecialty.value,
+      specialty: this.state.selectedSpecialty.label
     });
   };
   handleChangeSelect = async (selectedOption) => {

@@ -5,15 +5,18 @@
   width: 44px !important;
   background: #fff !important;
   border: 2px solid #d7d7d7 !important;
+
   &:hover {
     background: #eceaea !important;
   }
 }
+
 .slick-prev:before,
 .slick-next:before {
-  font-family: FontAwesome !important ;
+  font-family: FontAwesome !important;
   color: red !important;
 }
+
 .slick-next {
   right: -10px !important;
   z-index: 1000 !important;
@@ -21,17 +24,21 @@
   width: 44px !important;
   background: #fff !important;
   border: 2px solid #d7d7d7 !important;
+
   &:hover {
     background: #eceaea !important;
   }
 }
+
 .section-share {
   &.section-specialty {
     background: #f5f5f5;
   }
+
   &.section-outstanding-doctor {
     background: #f5f5f5;
   }
+
   .section-body {
     .section-customize {
       .bg-image {
@@ -45,39 +52,48 @@
         &.section-specialty {
           // background-image: url("../../../assets/specialty/co-xuong-khop.jpg");
         }
+
         &.section-medical-facility {
           // background-image: url("../../../assets/specialty/093035-benh-vien-thu-cuc-1.jpg");
         }
+
         &.section-outstanding-doctor {
           width: 120px;
           height: 120px;
           border-radius: 50%;
         }
+
         &.section-handbook {
           background-image: url("../../../assets/specialty/cam-nang.png");
         }
       }
     }
   }
+
   &.section-about {
     padding: 0 100px;
     height: 500px !important;
     border-bottom: 1px solid #f5f5f5;
     border-top: 1px solid #f5f5f5;
+
     .section-about-header {
       font-weight: 600;
       font-size: 22px;
       padding: 20px 10px;
     }
+
     .section-about-content {
       display: flex;
       gap: 15px;
       width: 100%;
+
       .content-left {
         width: 60%;
       }
+
       .content-right {
         width: 40%;
+
         p {
           text-align: justify;
           font-style: italic;
@@ -91,20 +107,25 @@
 .slick-disabled {
   display: none !important;
 }
+
 .section-share {
   height: 330px;
+
   .section-container {
     margin: 0 100px;
     display: flex;
     flex-direction: column;
+
     .section-header {
       height: 60px;
       margin-bottom: 30px;
       padding-top: 30px;
+
       .title-section {
         font-size: 22px;
         font-weight: 600;
       }
+
       .btn-section {
         float: right;
         padding: 10px 15px;
@@ -115,6 +136,7 @@
         color: black;
         cursor: pointer;
         text-transform: uppercase;
+
         &:hover {
           color: #fff;
           background: #f7d800;
@@ -130,15 +152,22 @@
     justify-content: center;
     margin-bottom: 10px;
   }
+
   .section-customize {
     padding: 5px;
     cursor: pointer;
+
     .customize-border {
       border: 1px solid rgb(201, 207, 213);
       padding: 20px;
+
+      .text-specialty {
+        opacity: 0.6;
+      }
     }
   }
 }
+
 .home-footer {
   padding-top: 20px;
   text-align: center;

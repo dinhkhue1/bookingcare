@@ -33,7 +33,6 @@ class OutStandingDoctor extends Component {
     let arrDoctors = this.state.arrDoctors;
     let { language } = this.props;
 
-    // arrDoctors = arrDoctors.concat(arrDoctors).concat(arrDoctors);
     return (
       <div className="section-share section-outstanding-doctor">
         <div className="section-container">
@@ -57,9 +56,13 @@ class OutStandingDoctor extends Component {
                       "binary"
                     );
                   }
+                  console.log('1', item)
                   let nameVi = `${item.positionData.valueVi}, ${item.lastname} ${item.firstname}`;
                   let nameEn = `${item.positionData.valueEn}, ${item.firstname} ${item.lastname}`;
-
+                  let textSpecialty = ''
+                  if (item && item.Doctor_Infor && item.Doctor_Infor.specialty) {
+                    textSpecialty = `${item.Doctor_Infor.specialty}`
+                  }
                   return (
                     <div
                       className="section-customize"
@@ -79,7 +82,7 @@ class OutStandingDoctor extends Component {
                           <div>
                             {language === LANGUAGES.VI ? nameVi : nameEn}
                           </div>
-                          <div>Cơ Xương Khớp</div>
+                          <div className="text-specialty">{textSpecialty}</div>
                         </div>
                       </div>
                     </div>

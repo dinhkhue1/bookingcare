@@ -6,8 +6,11 @@ import { history } from "../redux";
 import { ToastContainer } from "react-toastify";
 import CustomScrollbars from "../components/CustomScrollbars";
 import DetailDoctor from "./Patient/Doctor/DetailDoctor";
+import AllDoctor from "./Patient/Doctor/AllDoctor";
 import DetailSpecialty from "./Patient/Specialty/DetailSpecialty";
+import AllSpecialty from "./Patient/Specialty/AllSpecialty"
 import DetailClinic from "./Patient/Clinic/DetailClinic";
+import AllClinic from "./Patient/Clinic/AllClinic"
 import Doctor from "../routes/Doctor";
 
 import {
@@ -73,11 +76,17 @@ class App extends Component {
                   />
                   <Route path={path.homepage} component={homepage} />
                   <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
+                  <Route path={path.ALL_DOCTOR} component={AllDoctor} />
                   <Route
                     path={path.DETAIL_SPECIALTY}
                     component={DetailSpecialty}
                   />
+                  <Route
+                    path={path.ALL_SPECIALTY}
+                    component={AllSpecialty}
+                  />
                   <Route path={path.DETAIL_CLINIC} component={DetailClinic} />
+                  <Route path={path.ALL_HEALTH_FACILITY} component={AllClinic} />
                   <Route
                     path={path.VERIFY_EMAIL_BOOKING}
                     component={VerifyEmail}

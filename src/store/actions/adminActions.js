@@ -234,6 +234,7 @@ export const fetchAllDoctors = () => {
 };
 
 export const saveDetailDoctor = (data) => {
+  console.log('1', data)
   return async (dispatch, getState) => {
     try {
       let res = await saveDetailDoctorService(data);

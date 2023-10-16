@@ -11,6 +11,9 @@ class HomeHeader extends Component {
   changeLanguage = (languge) => {
     this.props.changeLanguageAppRedux(languge);
   };
+  changePath = (link) => {
+    this.props.history.push(link)
+  }
   returnToHome = () => {
     if (this.props.history) {
       this.props.history.push(`/home`);
@@ -33,7 +36,7 @@ class HomeHeader extends Component {
             <div className="center-content">
               <div className="child-content">
                 <div>
-                  <b>
+                  <b onClick={() => this.changePath("/specialty")}>
                     <FormattedMessage id="homeheader.specialty" />
                   </b>
                 </div>
@@ -43,7 +46,7 @@ class HomeHeader extends Component {
               </div>
               <div className="child-content">
                 <div>
-                  <b>
+                  <b onClick={() => this.changePath("/health-facility")}>
                     <FormattedMessage id="homeheader.health-facility" />
                   </b>
                 </div>
@@ -53,7 +56,7 @@ class HomeHeader extends Component {
               </div>
               <div className="child-content">
                 <div>
-                  <b>
+                  <b onClick={() => this.changePath("/all-doctor")}>
                     <FormattedMessage id="homeheader.doctor" />
                   </b>
                 </div>
@@ -123,7 +126,7 @@ class HomeHeader extends Component {
             <div className="content-down">
               <div className="options">
                 <div className="option-child">
-                  <div className="icon-child">
+                  <div className="icon-child" onClick={() => this.changePath("/specialty")}>
                     <i className="far fa-hospital"></i>
                   </div>
                   <div className="text-child">

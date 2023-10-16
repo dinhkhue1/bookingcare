@@ -1,11 +1,14 @@
 .detail-specialty-container {
   .search-sp-doctor {
-    height: 30px;
+    height: 70px;
     padding: 5px 8px;
     border: none;
     outline: none;
     border-radius: 3px;
     cursor: pointer;
+    select {
+      height: 25px
+    }
   }
   .description-specialty {
     // height: 200px;
