@@ -20,7 +20,21 @@ const deleteUserService = (userId) => {
     },
   });
 };
+const deleteSpecialtyService = (Id) => {
+  return axios.delete("/api/delete-specialty", {
+    data: {
+      id: Id,
+    },
+  });
+};
 
+const deleteClinicService = (Id) => {
+  return axios.delete("/api/delete-clinic", {
+    data: {
+      id: Id,
+    },
+  });
+};
 const editUserService = (inputdata) => {
   return axios.put("/api/edit-user", inputdata);
 };
@@ -74,6 +88,14 @@ const postVerifyBookAppointment = (data) => {
 
 const creatNewSpecialty = (data) => {
   return axios.post("/api/create-new-specialty", data);
+};
+
+const editSpecialty = (data) => {
+  return axios.post("/api/edit-specialty", data);
+};
+
+const editClinic = (data) => {
+  return axios.post("/api/edit-clinic", data);
 };
 
 const getAllSpecialty = () => {
@@ -133,5 +155,9 @@ export {
   getAllDetailClinicById,
   getAllPatientForDoctor,
   postSendRemedy,
-  getALlInforDoctor
+  getALlInforDoctor,
+  editSpecialty,
+  deleteSpecialtyService,
+  deleteClinicService,
+  editClinic
 };

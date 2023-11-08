@@ -10,6 +10,10 @@ import {
   saveDetailDoctorService,
   getAllSpecialty,
   getAllClinic,
+  editSpecialty,
+  deleteSpecialtyService,
+  editClinic,
+  deleteClinicService
 } from "../../services/userService";
 
 import { toast } from "react-toastify";
@@ -234,7 +238,6 @@ export const fetchAllDoctors = () => {
 };
 
 export const saveDetailDoctor = (data) => {
-  console.log('1', data)
   return async (dispatch, getState) => {
     try {
       let res = await saveDetailDoctorService(data);
@@ -324,4 +327,160 @@ export const fetchDoctorInforSuccess = (allData) => ({
 });
 export const fetchDoctorInforFailed = () => ({
   type: actionTypes.FETCH_DOCTOR_INFOR_FAILED,
+});
+
+
+export const getAllListCLinic = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllClinic();
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_LIST_CLINIC_SUCCESS,
+          data: res.data,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_LIST_CLINIC_FAILED,
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: actionTypes.FETCH_LIST_CLINIC_FAILED,
+      });
+      console.log(e);
+    }
+  };
+};
+
+export const getAllListSpecialty = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllSpecialty();
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_LIST_SPECIALTY_SUCCESS,
+          data: res.data,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_LIST_SPECIALTY_FAILED,
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: actionTypes.FETCH_LIST_SPECIALTY_FAILED,
+      });
+      console.log(e);
+    }
+  };
+};
+
+export const AdminEditSpecialty = (data) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await editSpecialty(data);
+
+      if (res && res.errCode === 0) {
+        toast.success("Thành công!");
+        dispatch(editSpecialtySuccess());
+        dispatch(getAllListSpecialty());
+      } else {
+        toast.error("Đã xảy ra lỗi ....");
+        dispatch(editSpecialtyFailed());
+      }
+    } catch (error) {
+      toast.error("Đã xảy ra lỗi ....");
+      dispatch(editSpecialtyFailed());
+      console.log(error);
+    }
+  };
+};
+
+export const editSpecialtySuccess = () => ({
+  type: actionTypes.EDIT_SPECIALTY_SUCCESS,
+});
+export const editSpecialtyFailed = () => ({
+  type: actionTypes.EDIT_SPECIALTY_FAILED,
+});
+
+export const deleteSpecialty = (Id) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await deleteSpecialtyService(Id);
+      if (res && res.errCode === 0) {
+        toast.success("Thành công!");
+        dispatch(deleteSpecialtySuccess());
+        dispatch(getAllListSpecialty());
+      } else {
+        toast.error("Đã xảy ra lỗi ....");
+        dispatch(deleteSpecialtyFailed());
+      }
+    } catch (error) {
+      toast.error("Đã xảy ra lỗi ....");
+      dispatch(deleteSpecialtyFailed());
+      console.log(error);
+    }
+  };
+};
+export const deleteSpecialtySuccess = () => ({
+  type: actionTypes.DELETE_SPECIALTY_SUCCESS,
+});
+export const deleteSpecialtyFailed = () => ({
+  type: actionTypes.DELETE_SPECIALTY_FAILED,
+});
+
+
+export const adminEditClinic = (data) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await editClinic(data);
+
+      if (res && res.errCode === 0) {
+        toast.success("Thành công!");
+        dispatch(editClinicSuccess());
+        dispatch(getAllListCLinic());
+      } else {
+        toast.error("Đã xảy ra lỗi ....");
+        dispatch(editClinicFailed());
+      }
+    } catch (error) {
+      toast.error("Đã xảy ra lỗi ....");
+      dispatch(editClinicFailed());
+      console.log(error);
+    }
+  };
+};
+
+export const editClinicSuccess = () => ({
+  type: actionTypes.EDIT_CLINIC_SUCCESS,
+});
+export const editClinicFailed = () => ({
+  type: actionTypes.EDIT_CLINIC_FAILED,
+});
+
+export const deleteClinic = (Id) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await deleteClinicService(Id);
+      if (res && res.errCode === 0) {
+        toast.success("Thành công!");
+        dispatch(deleteClinicSuccess());
+        dispatch(getAllListCLinic());
+      } else {
+        toast.error("Đã xảy ra lỗi ....");
+        dispatch(deleteClinicFailed());
+      }
+    } catch (error) {
+      toast.error("Đã xảy ra lỗi ....");
+      dispatch(deleteClinicFailed());
+      console.log(error);
+    }
+  };
+};
+export const deleteClinicSuccess = () => ({
+  type: actionTypes.DELETE_CLINIC_SUCCESS,
+});
+export const deleteClinicFailed = () => ({
+  type: actionTypes.DELETE_CLINIC_FAILED,
 });

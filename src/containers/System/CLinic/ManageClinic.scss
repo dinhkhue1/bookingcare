@@ -1,5 +1,6 @@
 .manage-specialty-container {
   padding: 0 15px;
+
   .ms-title {
     text-align: center;
     margin: 10px 0;
@@ -18,4 +19,8 @@
       margin: 15px 0;
     }
   }
+}
+
+.ant-table-thead .ant-table-cell {
+  background-color: #6c93d7 !important;
 }
