@@ -34,6 +34,35 @@ let createSpecialty = (data) => {
   });
 };
 
+let editSpecialty = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const spe = await db.Specialty.findOne({
+        where: { id: data.id },
+        raw: true,
+      });
+      if (spe) {
+        spe.name = data.name
+        spe.descriptionHTML = data.descriptionHTML
+        spe.descriptionMarkdown = data.descriptionMarkdown
+        if (data.image) {
+          spe.image = data.image
+        }
+        const updateUser = await db.Specialty.update(spe, {
+          where: {
+            id: data.id,
+          },
+        });
+        resolve({
+          errCode: 0,
+          message: "Cập nhật thành công",
+        });
+      }
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
 let getAllSpecialty = () => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -101,8 +130,31 @@ let getDetailSpecialtyById = (inputId, location) => {
     }
   });
 };
+let deleteSpecialty = (id) => {
+  return new Promise(async (resolve, reject) => {
+    let foundSpecialty = await db.Specialty.findOne({
+      where: { id: id },
+    });
+    if (!foundSpecialty) {
+      resolve({
+        errCode: 2,
+        errMessage: "Người dùng không tồn tại",
+      });
+    }
+    await db.Specialty.destroy({
+      where: { id: id },
+    });
+    resolve({
+      errCode: 0,
+      message: "người dùng đã được xóa",
+    });
+  });
+};
+
 module.exports = {
   createSpecialty: createSpecialty,
   getAllSpecialty: getAllSpecialty,
   getDetailSpecialtyById: getDetailSpecialtyById,
+  editSpecialty: editSpecialty,
+  deleteSpecialty: deleteSpecialty
 };

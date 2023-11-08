@@ -26,6 +26,12 @@ let getTopDoctorHome = (limitInput) => {
             as: "genderData",
             attributes: ["valueEn", "valueVi"],
           },
+          {
+            model: db.Doctor_Infor,
+            attributes: {
+              exclude: ["id", "doctorId"],
+            }
+          },
         ],
         raw: true,
         nest: true,
@@ -127,7 +133,6 @@ let saveDetailInforDoctor = (inputData) => {
         });
 
         if (doctorInfor) {
-          console.log('11111')
           doctorInfor.doctorId = inputData.doctorId;
           doctorInfor.priceId = inputData.selectedPrice;
           doctorInfor.provinceId = inputData.selectedProvince;

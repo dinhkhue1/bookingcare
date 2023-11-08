@@ -103,8 +103,65 @@ let getDetailClinicById = (inputId) => {
   });
 };
 
+let editClinic = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const clinic = await db.Clinic.findOne({
+        where: { id: data.id },
+        raw: true,
+      });
+      if (clinic) {
+        clinic.name = data.name
+        clinic.address = data.address
+        clinic.descriptionHTML = data.descriptionHTML
+        clinic.descriptionMarkdown = data.descriptionMarkdown
+        if (data.image) {
+          clinic.image = data.image
+        }
+        const update = await db.Clinic.update(clinic, {
+          where: {
+            id: data.id,
+          },
+        });
+        if (update) {
+          resolve({
+            errCode: 0,
+            message: "Cập nhật thành công",
+          });
+        }
+
+      }
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+let deleteClinic = (id) => {
+  return new Promise(async (resolve, reject) => {
+    let foundClinic = await db.Clinic.findOne({
+      where: { id: id },
+    });
+    if (!foundClinic) {
+      resolve({
+        errCode: 2,
+        errMessage: "Cơ sở không tồn tại",
+      });
+    }
+    await db.Clinic.destroy({
+      where: { id: id },
+    });
+    resolve({
+      errCode: 0,
+      message: "Cơ sở đã được xóa",
+    });
+  });
+};
+
 module.exports = {
   createClinic: createClinic,
   getAllClinic: getAllClinic,
   getDetailClinicById: getDetailClinicById,
+  editClinic: editClinic,
+  deleteClinic: deleteClinic
 };

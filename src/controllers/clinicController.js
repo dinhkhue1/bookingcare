@@ -11,6 +11,28 @@ let createClinic = async (req, res) => {
     });
   }
 };
+let editClinic = async (req, res) => {
+  try {
+    let infor = await clinicService.editClinic(req.body);
+    return res.status(200).json(infor);
+  } catch (error) {
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "err from the server",
+    });
+  }
+};
+
+let deleteClinic = async (req, res) => {
+  if (!req.body.id) {
+    return res.status(200).json({
+      errCode: 1,
+      errMessage: "thiếu tham số Id",
+    });
+  }
+  let message = await clinicService.deleteClinic(req.body.id);
+  return res.status(200).json(message);
+};
 
 let getAllClinic = async (req, res) => {
   try {
@@ -40,4 +62,6 @@ module.exports = {
   createClinic: createClinic,
   getAllClinic: getAllClinic,
   getDetailClinicById: getDetailClinicById,
+  editClinic: editClinic,
+  deleteClinic: deleteClinic
 };
